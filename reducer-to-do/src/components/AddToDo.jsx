@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, TextField } from "@material-ui/core";
-import { Reducer, initialState } from "../reducers/Reducer";
+// import { Reducer, initialState } from "../reducers/Reducer";
 
 const AddToDo = () => {
   return (

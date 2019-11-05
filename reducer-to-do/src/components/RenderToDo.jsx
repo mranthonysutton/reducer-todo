@@ -1,8 +1,22 @@
 import React, { useReducer, useState } from "react";
-import { Reducer, initialState } from "../reducers/Reducer";
+import Reducer, { initialState } from "../reducers/Reducer";
 
 const RenderToDo = () => {
-  return <h1>From Render To Do!</h1>;
+  const [state, dispatch] = useReducer(Reducer, initialState);
+  const [newToDo, setNewToDo] = useState({
+    item: "",
+    completed: false,
+    id: Date.now()
+  });
+  return (
+    <div className="to-do-list-container">
+      {state.map(item => (
+        <div className="to-do-list-item" key={item.id}>
+          <h1>{item.item}</h1>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default RenderToDo;
