@@ -2,7 +2,7 @@ import React from "react";
 import { Button, TextField } from "@material-ui/core";
 // import { Reducer, initialState } from "../reducers/Reducer";
 
-const AddToDo = () => {
+const AddToDo = props => {
   return (
     <div className="form-container">
       <TextField
@@ -14,8 +14,15 @@ const AddToDo = () => {
         label="Add To-Do"
         type="text"
         name="item"
+        onChange={props.handleInputChange}
       />
-      <Button variant="contained" color="primary" type="submit" size="large">
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        size="large"
+        onClick={props.addNewItem}
+      >
         Add To-Do
       </Button>
     </div>

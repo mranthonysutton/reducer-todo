@@ -4,7 +4,7 @@ export const initialState = [
   { item: "Plan Christmas Party", completed: true, id: 3 }
 ];
 
-const Reducers = (state, action) => {
+const Reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       return [...state, action.payload];
@@ -14,4 +14,4 @@ const Reducers = (state, action) => {
   }
 };
 
-export default Reducers;
+export default Reducer;
