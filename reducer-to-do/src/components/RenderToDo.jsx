@@ -1,45 +1,19 @@
-import React, { useReducer, useState } from "react";
-import Reducer, { initialState } from "../reducers/Reducer";
-import AddToDo from "./AddToDo";
+import React from "react";
 
-const RenderToDo = () => {
-  const [state, dispatch] = useReducer(Reducer, initialState);
-
-  const [newToDo, setNewToDo] = useState({
-    item: "",
-    completed: false,
-    id: Date.now()
-  });
-
-  const addNewItem = e => {
-    e.preventDefault();
-
-    dispatch({ type: "ADD_TODO", payload: newToDo });
-  };
-
-  const handleInputChange = e => {
-    setNewToDo({
-      item: e.target.value,
-      completed: false,
-      id: Date.now()
-    });
+const RenderToDo = ({ state, dispatch }) => {
+  const toggleTodo = todo => {
+    dispatch({ type: "TOGGLE_COMPLETED", payload: todo });
   };
 
   return (
-    <>
-      <AddToDo
-        addNewItem={addNewItem}
-        handleInputChange={handleInputChange}
-        value={newToDo}
-      />
-      <div className="to-do-list-container">
-        {state.todos.map(item => (
-          <div className="to-do-list-item" key={item.id}>
-            <h1>{item.item}</h1>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="list">
+      {state.todos.map(item => (
+        <div className={item.completed ? "list-item-completed" : "list-item"}>
+          <h1 onClick={() => toggleTodo(item)}>{item.item}</h1>
+        </div>
+      ))}
+    </div>
   );
 };
+
 export default RenderToDo;

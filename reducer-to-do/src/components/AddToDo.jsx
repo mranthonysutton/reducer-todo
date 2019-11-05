@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
-// import { Reducer, initialState } from "../reducers/Reducer";
 
-const AddToDo = props => {
+const AddToDo = ({ dispatch }) => {
+  const [todo, setToDo] = useState("");
+
+  const handleChanges = e => {
+    setToDo(e.target.value);
+  };
+
+  const addItem = e => {
+    e.preventDefault();
+    dispatch({ type: "ADD_TODO", payload: todo });
+  };
+
+  const clearCompleted = () => {
+    dispatch({ type: "CLEAR_COMPLETED" });
+  };
+
   return (
     <div className="form-container">
       <TextField
@@ -14,16 +28,26 @@ const AddToDo = props => {
         label="Add To-Do"
         type="text"
         name="item"
-        onChange={props.handleInputChange}
+        onChange={handleChanges}
+        value={todo}
       />
       <Button
         variant="contained"
         color="primary"
         type="submit"
         size="large"
-        onClick={props.addNewItem}
+        onClick={addItem}
       >
         Add To-Do
+      </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        type="submit"
+        size="large"
+        onClick={clearCompleted}
+      >
+        Clear Completed
       </Button>
     </div>
   );

@@ -9,10 +9,34 @@ export const initialState = {
 const Reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return { todos: [...state.todos, action.payload] };
+      const todo = {
+        item: action.payload,
+        completed: false,
+        id: Date.now()
+      };
+      return {
+        ...state,
+        todos: [...state.todos, todo]
+      };
+
+    case "CLEAR_COMPLETED":
+      return { todos: state.todos.filter(todo => !todo.completed) };
+
+    case "TOGGLE_COMPLETED":
+      return {
+        ...state,
+        todos: state.todos.map(todo => {
+          console.log(action.payload);
+          if (todo.id === action.payload.id) {
+            return { ...todo, completed: !todo.completed };
+          } else {
+            return todo;
+          }
+        })
+      };
 
     default:
-      throw new Error("No action completed");
+      return state;
   }
 };
 
