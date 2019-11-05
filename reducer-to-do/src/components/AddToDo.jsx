@@ -31,24 +31,26 @@ const AddToDo = ({ dispatch }) => {
         onChange={handleChanges}
         value={todo}
       />
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        size="large"
-        onClick={addItem}
-      >
-        Add To-Do
-      </Button>
-      <Button
-        variant="contained"
-        color="secondary"
-        type="submit"
-        size="large"
-        onClick={clearCompleted}
-      >
-        Clear Completed
-      </Button>
+      <div className="button-container">
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          size="large"
+          onClick={addItem}
+        >
+          Add To-Do
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          type="submit"
+          size="large"
+          onClick={clearCompleted}
+        >
+          Clear Completed
+        </Button>
+      </div>
     </div>
   );
 };

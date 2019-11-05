@@ -6,9 +6,9 @@ const RenderToDo = ({ state, dispatch }) => {
   };
 
   return (
-    <div className="list">
+    <div className="list-items-container">
       {state.todos.map(item => (
-        <div className={item.completed ? "list-item-completed" : "list-item"}>
+        <div className={`task${item.completed ? " completed" : ""}`}>
           <h1 onClick={() => toggleTodo(item)}>{item.item}</h1>
         </div>
       ))}
