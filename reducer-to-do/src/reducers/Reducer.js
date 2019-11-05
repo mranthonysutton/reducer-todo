@@ -14,10 +14,15 @@ const Reducer = (state, action) => {
         completed: false,
         id: Date.now()
       };
-      return {
-        ...state,
-        todos: [...state.todos, todo]
-      };
+
+      if (todo.item !== "") {
+        return {
+          ...state,
+          todos: [...state.todos, todo]
+        };
+      } else {
+        return state;
+      }
 
     case "CLEAR_COMPLETED":
       return { todos: state.todos.filter(todo => !todo.completed) };
@@ -26,7 +31,6 @@ const Reducer = (state, action) => {
       return {
         ...state,
         todos: state.todos.map(todo => {
-          console.log(action.payload);
           if (todo.id === action.payload.id) {
             return { ...todo, completed: !todo.completed };
           } else {
