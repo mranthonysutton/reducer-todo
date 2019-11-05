@@ -14,7 +14,7 @@ const RenderToDo = () => {
   const addNewItem = e => {
     e.preventDefault();
 
-    // dispatch({ type: "ADD", state });
+    dispatch({ type: "ADD_TODO", payload: newToDo });
   };
 
   const handleInputChange = e => {
@@ -27,9 +27,13 @@ const RenderToDo = () => {
 
   return (
     <>
-      <AddToDo addNewItem={addNewItem} handleInputChange={handleInputChange} />
+      <AddToDo
+        addNewItem={addNewItem}
+        handleInputChange={handleInputChange}
+        value={newToDo}
+      />
       <div className="to-do-list-container">
-        {state.map(item => (
+        {state.todos.map(item => (
           <div className="to-do-list-item" key={item.id}>
             <h1>{item.item}</h1>
           </div>
@@ -38,5 +42,4 @@ const RenderToDo = () => {
     </>
   );
 };
-
 export default RenderToDo;
