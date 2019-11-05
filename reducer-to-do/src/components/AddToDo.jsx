@@ -10,9 +10,11 @@ const AddToDo = ({ dispatch }) => {
 
   const addItem = e => {
     e.preventDefault();
+    // the type has to match the case in the reducer, while the payload is set to whatever has been changed due to the handleChange function
     dispatch({ type: "ADD_TODO", payload: todo });
   };
 
+  // Just clears the completed items since it does not need a payload to render anything
   const clearCompleted = () => {
     dispatch({ type: "CLEAR_COMPLETED" });
   };

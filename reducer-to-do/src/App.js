@@ -8,6 +8,7 @@ function App() {
   const [state, dispatch] = useReducer(Reducer, initialState);
   return (
     <div className="App">
+      {/* Used props to pass in both dispatch and state */}
       <AddToDo dispatch={dispatch} state={state} />
       <RenderToDo dispatch={dispatch} state={state} />
     </div>
