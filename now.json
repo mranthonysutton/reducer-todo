@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "name": "reducer-to-do",
+  "builds": [
+    {
+      "src": "reducer-to-do/package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "guidr/$1" }]
+}
