@@ -8,5 +8,5 @@
       "config": { "distDir": "build" }
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "guidr/$1" }]
+  "routes": [{ "src": "/(.*)", "dest": "reducer-to-do/$1" }]
 }
